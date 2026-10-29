@@ -50,6 +50,17 @@ it('Deve listar os livros usando filtros', () => {
 
     })
 
+    it.only('Deve listar as categorias de livros disponiveis ', () => {
+        cy.api({
+            method: 'GET',
+            url: 'books/categories'
+            
+        }).should(response => {
+            expect(response.status).to.equal(200)
+        })
+        
+    });
+
 });
 
 describe('POST - Teste de API Adicionar livro', () => {
@@ -167,7 +178,7 @@ describe('POST - Teste de API Adicionar livro', () => {
             it('Deve Deletar livro com sucesso', () => {
                 cy.api({
                     method: 'DELETE',
-                    url: 'books/8',
+                    url: 'books/31',
                     headers: { 'Authorization': token },
 
                 }).should(response => {
@@ -176,7 +187,7 @@ describe('POST - Teste de API Adicionar livro', () => {
                 })    
             });
 
-            it.only('Deve deletar um livro dinamicamente', () => {
+            it('Deve deletar um livro dinamicamente', () => {
                 cy.Cadastrarlivros('LivroDeletado', 'LukDelete', 'Apagar', 'naoexiste', 'Editora21', 'Português', 'Físico').then(BookID => {
                    cy.api({
                     method: 'DELETE',
