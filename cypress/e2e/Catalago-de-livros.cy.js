@@ -50,7 +50,7 @@ it('Deve listar os livros usando filtros', () => {
 
     })
 
-    it.only('Deve listar as categorias de livros disponiveis ', () => {
+    it('Deve listar as categorias de livros disponiveis ', () => {
         cy.api({
             method: 'GET',
             url: 'books/categories'
